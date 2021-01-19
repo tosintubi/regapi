@@ -40,7 +40,6 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
 
-
     public AppUser(String firstName, String lastName, String username,
                    String password,  Boolean locked, Boolean enabled, AppUserRole appUserRole) {
         this.firstName = firstName;
