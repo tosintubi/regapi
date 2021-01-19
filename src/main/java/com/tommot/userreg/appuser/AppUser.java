@@ -32,7 +32,7 @@ public class AppUser implements UserDetails {
     private Long id;
     private String firstName;
     private String lastName;
-    private String username;
+    private String email;
     private String password;
     private Boolean locked;
     private Boolean enabled;
@@ -44,7 +44,7 @@ public class AppUser implements UserDetails {
                    String password,  Boolean locked, Boolean enabled, AppUserRole appUserRole) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.username = username;
+        this.email = username;
         this.password = password;
         this.locked = locked;
         this.enabled = enabled;
@@ -64,7 +64,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
