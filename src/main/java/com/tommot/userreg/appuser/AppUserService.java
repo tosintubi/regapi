@@ -4,13 +4,17 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class AppUserService implements UserDetailsService {
-    private final static String USER_NOT_FOUND_MESSAGE = "User with email %s not found";
+
+    private final static String USER_NOT_FOUND_MESSAGE = "User with email is not found";
     private final AppUserRepository appUserRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return appUserRepository.findByEmail(email).orElseThrow(() ->
@@ -18,7 +22,17 @@ public class AppUserService implements UserDetailsService {
     }
     public String signUpUser(AppUser appUser){
         boolean userExist = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
-        return "";
+
+        if (userExist){
+            throw new IllegalStateException("Email already taken");
+        }
+        String encoder = bCryptPasswordEncoder.encode((appUser.getPassword()));
+        appUser.setPassword(encoder);
+
+        // Saves user into DB
+        appUserRepository.save(appUser);
+        //TODO: Implement Send confirmation token
+        return "it works";
     }
 }
 
