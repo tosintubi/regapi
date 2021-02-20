@@ -10,7 +10,10 @@ public class RegistrationService {
     private EmailValidator emailValidator;
     public String register(RegistrationRequest request) {
 
-        boolean isvalid = emailValidator.test(request.getEmail());
+        boolean isValid = emailValidator.test(request.getEmail());
+        if (isValid) {
+            throw  new IllegalStateException("Email not valid");
+        }
         return "works";
     }
 }
