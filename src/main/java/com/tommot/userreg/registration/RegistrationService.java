@@ -1,5 +1,8 @@
 package com.tommot.userreg.registration;
 
+import com.tommot.userreg.appuser.AppUser;
+import com.tommot.userreg.appuser.AppUserRole;
+import com.tommot.userreg.appuser.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -7,13 +10,20 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class RegistrationService {
 
-    private EmailValidator emailValidator;
+    private final EmailValidator emailValidator;
+    private final AppUserService appUserService;
     public String register(RegistrationRequest request) {
 
         boolean isValid = emailValidator.test(request.getEmail());
         if (isValid) {
             throw  new IllegalStateException("Email not valid");
         }
-        return "works";
+        return appUserService.signUpUser(new AppUser(
+                request.getFirstName(),
+                request.getLastName(),
+                request.getEmail(),
+                request.getPassword(),
+                AppUserRole.USER
+        ));
     }
 }
