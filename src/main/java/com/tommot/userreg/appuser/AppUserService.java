@@ -30,6 +30,7 @@ public class AppUserService implements UserDetailsService {
         appUser.setPassword(encoder);
 
         // Saves user into DB
+        
         appUserRepository.save(appUser);
         //TODO: Implement Send confirmation token
         return "it works";
