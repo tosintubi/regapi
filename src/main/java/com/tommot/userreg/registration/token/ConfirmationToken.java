@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class ConfirmationToken {
 
@@ -35,6 +34,11 @@ public class ConfirmationToken {
     private LocalDateTime expiresAt;
     private LocalDateTime confirmedAt;
 
+    @OneToOne
+    @JoinColumn(
+            nullable = false,
+            name = "app_user_id"
+    )
     private AppUser appUser;
 
     public ConfirmationToken(String token,
