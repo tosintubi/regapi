@@ -1,9 +1,7 @@
 package com.tommot.userreg.registration.token;
 
 import com.tommot.userreg.appuser.AppUser;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class ConfirmationToken {
 
