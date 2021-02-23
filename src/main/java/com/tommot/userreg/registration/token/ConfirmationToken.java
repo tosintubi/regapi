@@ -36,7 +36,7 @@ public class ConfirmationToken {
     @OneToOne
     @JoinColumn(
             nullable = false,
-           name = "id"
+           name = "app_user_id"
     )
     private AppUser appUser;
 
