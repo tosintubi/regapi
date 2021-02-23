@@ -2,7 +2,6 @@ package com.tommot.userreg.registration.token;
 
 import com.tommot.userreg.appuser.AppUser;
 import lombok.*;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
