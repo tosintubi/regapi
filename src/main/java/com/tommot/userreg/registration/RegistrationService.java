@@ -4,6 +4,7 @@ import com.tommot.userreg.appuser.AppUser;
 import com.tommot.userreg.appuser.AppUserRole;
 import com.tommot.userreg.appuser.AppUserService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
