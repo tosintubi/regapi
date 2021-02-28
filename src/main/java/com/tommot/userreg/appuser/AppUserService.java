@@ -46,7 +46,7 @@ public class AppUserService implements UserDetailsService {
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
-        // TODO: Implement Email
+        // TODO: Implement Email - To be implemented later
         return token;
     }
 }
